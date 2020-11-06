@@ -1,4 +1,7 @@
 .App {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
   text-align: center;
   color: white;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -7,6 +10,12 @@
 
 .card-img-top {
   width: 65vw;
+}
+
+.card-body {
+  background-color: #B5A886;
+  width: 35rem;
+  border-radius: 5px;
 }
 
 .App-logo {

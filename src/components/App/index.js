@@ -40,7 +40,6 @@ class App extends Component {
       getJokes.getJokes().then((resp) => {
         this.setState({
           joke: resp,
-          showSetup: false,
           showPunchline: false,
         });
       });

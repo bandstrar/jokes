@@ -16,8 +16,32 @@ class App extends Component {
       showPunchline: false,
     }
 
-    componentDidMount() {
+    randomJoke = () => {
       getJokes.getJokes().then((resp) => {
+        this.setState({
+          joke: resp,
+        });
+      });
+    }
+
+    generalJoke = () => {
+      getJokes.getGeneralJoke().then((resp) => {
+        this.setState({
+          joke: resp,
+        });
+      });
+    }
+
+    programmingJoke = () => {
+      getJokes.getProgrammingJoke().then((resp) => {
+        this.setState({
+          joke: resp,
+        });
+      });
+    }
+
+    knockJoke = () => {
+      getJokes.getKnockJoke().then((resp) => {
         this.setState({
           joke: resp,
         });
@@ -39,7 +63,8 @@ class App extends Component {
     resetJoke = () => {
       getJokes.getJokes().then((resp) => {
         this.setState({
-          joke: resp,
+          joke: {},
+          showSetup: false,
           showPunchline: false,
         });
       });
@@ -56,13 +81,22 @@ class App extends Component {
 
       {showPunchline ? (<Punchline punchline={joke.punchline}/>) : (null)}
 
-      {!showSetup && !showPunchline ? (
-        <button className='btn btn-dark setup' onClick={this.showSetupJoke}>Get a Joke</button>
-      ) : (null)}
+        {!showSetup && !showPunchline
+          ? (<button className='btn btn-dark random' onClick={() => { this.randomJoke(); this.showSetupJoke(); }}>Get a Random Joke</button>)
+          : (null)}
+        {!showSetup && !showPunchline
+          ? (<button className='btn btn-dark general' onClick={() => { this.generalJoke(); this.showSetupJoke(); }}>Get a General Joke</button>)
+          : (null)}
+        {!showSetup && !showPunchline
+          ? (<button className='btn btn-dark programming' onClick={() => { this.programmingJoke(); this.showSetupJoke(); }}>Get a Programming Joke</button>)
+          : (null)}
+        {!showSetup && !showPunchline
+          ? (<button className='btn btn-dark knock-knock' onClick={() => { this.knockJoke(); this.showSetupJoke(); }}>Get a Knock-Knock Joke</button>)
+          : (null)}
 
       {showSetup && !showPunchline ? (<button className='btn btn-dark punchline' onClick={this.showPunchlineJoke}>Get Punchline</button>) : (null)}
 
-        {showPunchline ? (<button className='btn btn-dark newjoke' onClick={this.resetJoke}>Get a New Joke</button>) : (null)}
+      {showSetup && showPunchline ? (<button className='btn btn-dark reset' onClick={this.resetJoke}>Get a New Joke</button>) : (null)}
         </div>
             </div>
       );

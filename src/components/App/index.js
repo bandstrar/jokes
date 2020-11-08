@@ -77,26 +77,22 @@ class App extends Component {
       <img src="https://user-images.githubusercontent.com/29741570/98047811-372e3b80-1df2-11eb-9bb6-3e8845e92d9e.png" className="card-img-top" alt="..." />
 
       <div className="card-body">
-      {showSetup ? (<Setup setup={joke.setup}/>) : (null)}
+      {showSetup && (<Setup setup={joke.setup}/>)}
 
-      {showPunchline ? (<Punchline punchline={joke.punchline}/>) : (null)}
+      {showPunchline && (<Punchline punchline={joke.punchline}/>)}
 
         {!showSetup && !showPunchline
-          ? (<button className='btn btn-dark random' onClick={() => { this.randomJoke(); this.showSetupJoke(); }}>Get a Random Joke</button>)
-          : (null)}
+          && (<button className='btn btn-dark random' onClick={() => { this.randomJoke(); this.showSetupJoke(); }}>Get a Random Joke</button>)}
         {!showSetup && !showPunchline
-          ? (<button className='btn btn-dark general' onClick={() => { this.generalJoke(); this.showSetupJoke(); }}>Get a General Joke</button>)
-          : (null)}
+          && (<button className='btn btn-dark general' onClick={() => { this.generalJoke(); this.showSetupJoke(); }}>Get a General Joke</button>)}
         {!showSetup && !showPunchline
-          ? (<button className='btn btn-dark programming' onClick={() => { this.programmingJoke(); this.showSetupJoke(); }}>Get a Programming Joke</button>)
-          : (null)}
+          && (<button className='btn btn-dark programming' onClick={() => { this.programmingJoke(); this.showSetupJoke(); }}>Get a Programming Joke</button>)}
         {!showSetup && !showPunchline
-          ? (<button className='btn btn-dark knock-knock' onClick={() => { this.knockJoke(); this.showSetupJoke(); }}>Get a Knock-Knock Joke</button>)
-          : (null)}
+          && (<button className='btn btn-dark knock-knock' onClick={() => { this.knockJoke(); this.showSetupJoke(); }}>Get a Knock-Knock Joke</button>)}
 
-      {showSetup && !showPunchline ? (<button className='btn btn-dark punchline' onClick={this.showPunchlineJoke}>Get Punchline</button>) : (null)}
+      {showSetup && !showPunchline && (<button className='btn btn-dark punchline' onClick={this.showPunchlineJoke}>Get Punchline</button>)}
 
-      {showSetup && showPunchline ? (<button className='btn btn-dark reset' onClick={this.resetJoke}>Get a New Joke</button>) : (null)}
+      {showSetup && showPunchline && (<button className='btn btn-dark reset' onClick={this.resetJoke}>Get a New Joke</button>)}
         </div>
             </div>
       );
